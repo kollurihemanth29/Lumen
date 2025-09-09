@@ -1,0 +1,198 @@
+/* PROFESSIONAL NAVBAR STYLES */
+
+:root {
+    --mlrit-purple: #8b5cf6;
+    --mlrit-purple-light: #a78bfa;
+    --mlrit-purple-dark: #7c3aed;
+    --mlrit-pink: #ec4899;
+    --mlrit-blue: #3b82f6;
+    --bg-dark: #0f0f23;
+    --bg-mid: #1a1a2e;
+    --bg-light: #16213e;
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --border-subtle: rgba(139, 92, 246, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-tertiary: #64748b;
+}
+
+/* Navbar Container */
+.navbar {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+/* Brand Styling */
+.navbar-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.navbar-brand .text-primary {
+    background: linear-gradient(135deg, var(--mlrit-purple), var(--mlrit-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.5rem !important;
+}
+
+/* Navigation Links */
+.nav-link {
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 0 0.25rem;
+}
+
+.nav-link:hover {
+    color: var(--text-primary) !important;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-1px);
+}
+
+.nav-link:focus {
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+}
+
+/* Profile Avatar */
+.profile-avatar {
+    background: linear-gradient(135deg, var(--mlrit-purple), var(--mlrit-blue));
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+    border-color: var(--mlrit-purple-light);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin-top: 0.5rem;
+}
+
+.dropdown-item {
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 0.25rem 0.5rem;
+    padding: 0.75rem 1rem;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    transform: translateX(4px);
+}
+
+.dropdown-item:focus {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+}
+
+.dropdown-item.text-danger:hover {
+    background: rgba(236, 72, 153, 0.1);
+    color: var(--mlrit-pink);
+}
+
+/* Register Button */
+.btn-primary {
+    background: var(--mlrit-purple);
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6);
+    background: var(--mlrit-purple-dark);
+}
+
+/* Mobile Toggle */
+.navbar-toggler {
+    border: 1px solid var(--border-subtle);
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Right-aligned navigation styles */
+.navbar-nav.flex-row {
+    gap: 0.5rem;
+}
+
+.navbar-nav.flex-row .nav-item {
+    margin: 0;
+}
+
+.navbar-nav.flex-row .nav-link {
+    padding: 0.5rem 0.75rem;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        padding: 1rem 0;
+    }
+    
+    .navbar-nav.flex-row {
+        flex-direction: column !important;
+        gap: 0;
+    }
+    
+    .nav-link {
+        padding: 0.75rem 1rem;
+        margin: 0.25rem 0;
+    }
+    
+    .dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        margin-top: 1rem;
+    }
+}
+
+/* Animation for smooth transitions */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-menu.show {
+    animation: fadeIn 0.3s ease-out;
+}

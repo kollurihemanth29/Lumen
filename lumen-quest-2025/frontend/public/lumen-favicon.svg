@@ -1,0 +1,28 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lumenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f0ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8a4eff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6fbf;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="16" cy="16" r="15" fill="#08101a" stroke="url(#lumenGradient)" stroke-width="2"/>
+  
+  <!-- Network Node Pattern -->
+  <circle cx="8" cy="8" r="2" fill="#00f0ff" opacity="0.8"/>
+  <circle cx="24" cy="8" r="2" fill="#8a4eff" opacity="0.8"/>
+  <circle cx="16" cy="16" r="2.5" fill="#ff6fbf" opacity="1"/>
+  <circle cx="8" cy="24" r="2" fill="#8a4eff" opacity="0.8"/>
+  <circle cx="24" cy="24" r="2" fill="#00f0ff" opacity="0.8"/>
+  
+  <!-- Connection Lines -->
+  <line x1="8" y1="8" x2="16" y2="16" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+  <line x1="24" y1="8" x2="16" y2="16" stroke="#8a4eff" stroke-width="1" opacity="0.6"/>
+  <line x1="16" y1="16" x2="8" y2="24" stroke="#8a4eff" stroke-width="1" opacity="0.6"/>
+  <line x1="16" y1="16" x2="24" y2="24" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+  
+  <!-- Central Glow -->
+  <circle cx="16" cy="16" r="4" fill="none" stroke="#ff6fbf" stroke-width="0.5" opacity="0.3"/>
+</svg>

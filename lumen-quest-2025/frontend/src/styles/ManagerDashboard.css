@@ -1,0 +1,548 @@
+/* PROFESSIONAL MANAGER DASHBOARD STYLES */
+@import './SharedBackground.css';
+
+:root {
+    --mlrit-purple: #8b5cf6;
+    --mlrit-purple-light: #a78bfa;
+    --mlrit-purple-dark: #7c3aed;
+    --mlrit-pink: #ec4899;
+    --mlrit-blue: #3b82f6;
+    --bg-dark: #0f0f23;
+    --bg-mid: #1a1a2e;
+    --bg-light: #16213e;
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --border-subtle: rgba(139, 92, 246, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-tertiary: #64748b;
+}
+
+/* Main Dashboard Container */
+.manager-dashboard {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark-base);
+    min-height: 100vh;
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Use shared animated background system */
+
+/* Manager Header */
+.manager-header {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--border-subtle);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 24px;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.manager-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 0, 128, 0.05));
+    z-index: 1;
+}
+
+.manager-shield-icon {
+    font-size: 4.5rem;
+    background: linear-gradient(135deg, var(--mlrit-blue), var(--mlrit-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.manager-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--mlrit-blue), var(--mlrit-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 2;
+}
+
+.manager-subtitle {
+    font-size: 1.6rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+}
+
+.manager-badge {
+    background: var(--mlrit-blue);
+    color: white;
+    padding: 0.7rem 1.8rem;
+    border-radius: 12px;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 1rem;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.manager-badge:hover {
+    transform: translateY(-2px);
+    background: var(--mlrit-purple);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+}
+
+/* Department Overview */
+.manager-dept-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2.5rem 0;
+}
+
+.manager-dept-card {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.85), rgba(26, 26, 46, 0.85));
+    border: 2px solid transparent;
+    border-radius: 18px;
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+}
+
+.manager-dept-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #8000ff, #00ffff, #ff0080, #8000ff);
+    z-index: -1;
+    border-radius: 18px;
+    padding: 2px;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+}
+
+.manager-dept-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(128, 0, 255, 0.4);
+}
+
+.manager-dept-icon {
+    font-size: 3.5rem;
+    background: linear-gradient(45deg, #8000ff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+}
+
+.manager-dept-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #8000ff;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 18px rgba(128, 0, 255, 0.6);
+}
+
+.manager-dept-label {
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Team Management */
+.manager-team-section {
+    background: linear-gradient(45deg, #0a0a0a, #1a1a2e);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    border: 2px solid rgba(128, 0, 255, 0.4);
+}
+
+.manager-team-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #8000ff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.manager-team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.manager-team-btn {
+    background: linear-gradient(45deg, #8000ff, #ff0080);
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    padding: 2rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.manager-team-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transition: left 0.5s;
+}
+
+.manager-team-btn:hover::before {
+    left: 100%;
+}
+
+.manager-team-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(128, 0, 255, 0.4);
+    background: linear-gradient(45deg, #ff0080, #00ffff);
+}
+
+.manager-team-btn i {
+    display: block;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Performance Metrics */
+.manager-performance {
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    border: 2px solid rgba(0, 255, 255, 0.4);
+}
+
+.manager-performance-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #00ffff;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.manager-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.manager-metric-item {
+    background: linear-gradient(45deg, rgba(26, 26, 46, 0.6), rgba(22, 33, 62, 0.6));
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.manager-metric-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 255, 255, 0.25);
+    border-color: #00ffff;
+}
+
+.manager-metric-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #00ffff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.manager-metric-label {
+    color: #ffffff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Approval Queue */
+.manager-approvals {
+    background: linear-gradient(45deg, #ff0080, #ff4444);
+    border-radius: 18px;
+    padding: 2rem;
+    margin: 2.5rem 0;
+    border: 2px solid #ff0080;
+}
+
+.manager-approvals-title {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.manager-approval-item {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    border-left: 4px solid #00ffff;
+    transition: all 0.3s ease;
+}
+
+.manager-approval-item:hover {
+    transform: translateX(8px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.manager-approval-text {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.manager-approval-time {
+    color: #00ffff;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.manager-approval-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.manager-approve-btn {
+    background: linear-gradient(45deg, #00ff41, #00ffff);
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.manager-reject-btn {
+    background: linear-gradient(45deg, #ff0000, #ff0080);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.manager-approve-btn:hover,
+.manager-reject-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Reports Section */
+.manager-reports {
+    background: linear-gradient(45deg, #16213e, #1a1a2e);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    border: 2px solid rgba(255, 0, 128, 0.4);
+}
+
+.manager-reports-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff0080, #8000ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.manager-reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.manager-report-btn {
+    background: linear-gradient(45deg, #ff0080, #8000ff);
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    padding: 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.manager-report-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 0, 128, 0.4);
+}
+
+.manager-report-btn i {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .manager-title {
+        font-size: 2.5rem;
+    }
+    
+    .manager-dept-overview {
+        grid-template-columns: 1fr;
+    }
+    
+    .manager-team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .manager-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .manager-reports-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Matrix Background Effect */
+.manager-matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -3;
+    opacity: 0.08;
+}
+
+.manager-matrix-char {
+    position: absolute;
+    color: #8000ff;
+    font-family: 'Courier New', monospace;
+    font-size: 15px;
+    animation: manager-matrix-fall 3.5s linear infinite;
+}
+
+@keyframes manager-matrix-fall {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* AI Assistant Bot */
+.ai-assistant-bot {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.ai-bot-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--mlrit-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    animation: bot-float 3s ease-in-out infinite;
+}
+
+.ai-bot-icon:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+    background: var(--mlrit-purple);
+}
+
+.ai-bot-pulse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.3);
+    animation: bot-pulse 2s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes bot-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes bot-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}

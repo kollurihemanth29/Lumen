@@ -1,0 +1,51 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lumenGradient192" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f0ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8a4eff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6fbf;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="96" cy="96" r="90" fill="#08101a" stroke="url(#lumenGradient192)" stroke-width="8"/>
+  
+  <!-- Network Node Pattern -->
+  <circle cx="48" cy="48" r="12" fill="#00f0ff" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="144" cy="48" r="12" fill="#8a4eff" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="96" cy="96" r="16" fill="#ff6fbf" opacity="1" filter="url(#glow)"/>
+  <circle cx="48" cy="144" r="12" fill="#8a4eff" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="144" cy="144" r="12" fill="#00f0ff" opacity="0.9" filter="url(#glow)"/>
+  
+  <!-- Additional Network Nodes -->
+  <circle cx="96" cy="32" r="8" fill="#ff6fbf" opacity="0.7"/>
+  <circle cx="160" cy="96" r="8" fill="#00f0ff" opacity="0.7"/>
+  <circle cx="96" cy="160" r="8" fill="#8a4eff" opacity="0.7"/>
+  <circle cx="32" cy="96" r="8" fill="#ff6fbf" opacity="0.7"/>
+  
+  <!-- Connection Lines -->
+  <line x1="48" y1="48" x2="96" y2="96" stroke="#00f0ff" stroke-width="3" opacity="0.6"/>
+  <line x1="144" y1="48" x2="96" y2="96" stroke="#8a4eff" stroke-width="3" opacity="0.6"/>
+  <line x1="96" y1="96" x2="48" y2="144" stroke="#8a4eff" stroke-width="3" opacity="0.6"/>
+  <line x1="96" y1="96" x2="144" y2="144" stroke="#00f0ff" stroke-width="3" opacity="0.6"/>
+  
+  <!-- Extended Network -->
+  <line x1="96" y1="32" x2="96" y2="96" stroke="#ff6fbf" stroke-width="2" opacity="0.4"/>
+  <line x1="160" y1="96" x2="96" y2="96" stroke="#00f0ff" stroke-width="2" opacity="0.4"/>
+  <line x1="96" y1="160" x2="96" y2="96" stroke="#8a4eff" stroke-width="2" opacity="0.4"/>
+  <line x1="32" y1="96" x2="96" y2="96" stroke="#ff6fbf" stroke-width="2" opacity="0.4"/>
+  
+  <!-- Central Glow Rings -->
+  <circle cx="96" cy="96" r="24" fill="none" stroke="#ff6fbf" stroke-width="2" opacity="0.3"/>
+  <circle cx="96" cy="96" r="32" fill="none" stroke="#8a4eff" stroke-width="1" opacity="0.2"/>
+  
+  <!-- Lumen Text -->
+  <text x="96" y="180" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" text-anchor="middle" fill="url(#lumenGradient192)">LUMEN</text>
+</svg>

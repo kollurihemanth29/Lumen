@@ -1,0 +1,75 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lumenGradient512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f0ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8a4eff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6fbf;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow512">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ff6fbf;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ff6fbf;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="#08101a" stroke="url(#lumenGradient512)" stroke-width="16"/>
+  
+  <!-- Central Glow Background -->
+  <circle cx="256" cy="256" r="120" fill="url(#centerGlow)" opacity="0.3"/>
+  
+  <!-- Main Network Nodes -->
+  <circle cx="128" cy="128" r="24" fill="#00f0ff" opacity="0.9" filter="url(#glow512)"/>
+  <circle cx="384" cy="128" r="24" fill="#8a4eff" opacity="0.9" filter="url(#glow512)"/>
+  <circle cx="256" cy="256" r="32" fill="#ff6fbf" opacity="1" filter="url(#glow512)"/>
+  <circle cx="128" cy="384" r="24" fill="#8a4eff" opacity="0.9" filter="url(#glow512)"/>
+  <circle cx="384" cy="384" r="24" fill="#00f0ff" opacity="0.9" filter="url(#glow512)"/>
+  
+  <!-- Secondary Network Nodes -->
+  <circle cx="256" cy="80" r="16" fill="#ff6fbf" opacity="0.8"/>
+  <circle cx="432" cy="256" r="16" fill="#00f0ff" opacity="0.8"/>
+  <circle cx="256" cy="432" r="16" fill="#8a4eff" opacity="0.8"/>
+  <circle cx="80" cy="256" r="16" fill="#ff6fbf" opacity="0.8"/>
+  
+  <!-- Tertiary Network Nodes -->
+  <circle cx="180" cy="180" r="12" fill="#8a4eff" opacity="0.6"/>
+  <circle cx="332" cy="180" r="12" fill="#00f0ff" opacity="0.6"/>
+  <circle cx="180" cy="332" r="12" fill="#00f0ff" opacity="0.6"/>
+  <circle cx="332" cy="332" r="12" fill="#8a4eff" opacity="0.6"/>
+  
+  <!-- Primary Connection Lines -->
+  <line x1="128" y1="128" x2="256" y2="256" stroke="#00f0ff" stroke-width="6" opacity="0.7"/>
+  <line x1="384" y1="128" x2="256" y2="256" stroke="#8a4eff" stroke-width="6" opacity="0.7"/>
+  <line x1="256" y1="256" x2="128" y2="384" stroke="#8a4eff" stroke-width="6" opacity="0.7"/>
+  <line x1="256" y1="256" x2="384" y2="384" stroke="#00f0ff" stroke-width="6" opacity="0.7"/>
+  
+  <!-- Secondary Connection Lines -->
+  <line x1="256" y1="80" x2="256" y2="256" stroke="#ff6fbf" stroke-width="4" opacity="0.5"/>
+  <line x1="432" y1="256" x2="256" y2="256" stroke="#00f0ff" stroke-width="4" opacity="0.5"/>
+  <line x1="256" y1="432" x2="256" y2="256" stroke="#8a4eff" stroke-width="4" opacity="0.5"/>
+  <line x1="80" y1="256" x2="256" y2="256" stroke="#ff6fbf" stroke-width="4" opacity="0.5"/>
+  
+  <!-- Tertiary Connection Lines -->
+  <line x1="180" y1="180" x2="256" y2="256" stroke="#8a4eff" stroke-width="2" opacity="0.3"/>
+  <line x1="332" y1="180" x2="256" y2="256" stroke="#00f0ff" stroke-width="2" opacity="0.3"/>
+  <line x1="180" y1="332" x2="256" y2="256" stroke="#00f0ff" stroke-width="2" opacity="0.3"/>
+  <line x1="332" y1="332" x2="256" y2="256" stroke="#8a4eff" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Central Glow Rings -->
+  <circle cx="256" cy="256" r="48" fill="none" stroke="#ff6fbf" stroke-width="3" opacity="0.4"/>
+  <circle cx="256" cy="256" r="64" fill="none" stroke="#8a4eff" stroke-width="2" opacity="0.3"/>
+  <circle cx="256" cy="256" r="80" fill="none" stroke="#00f0ff" stroke-width="1" opacity="0.2"/>
+  
+  <!-- Outer Network Ring -->
+  <circle cx="256" cy="256" r="200" fill="none" stroke="url(#lumenGradient512)" stroke-width="2" opacity="0.3" stroke-dasharray="10,5"/>
+  
+  <!-- Company Text -->
+  <text x="256" y="460" font-family="Space Grotesk, sans-serif" font-size="32" font-weight="700" text-anchor="middle" fill="url(#lumenGradient512)">LUMEN QUEST</text>
+  <text x="256" y="490" font-family="Inter, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#8a4eff" opacity="0.8">TELECOM INVENTORY</text>
+</svg>
