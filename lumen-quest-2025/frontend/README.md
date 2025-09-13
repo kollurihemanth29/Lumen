@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+Subscription Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack subscription management system that allows users to explore, subscribe, and manage subscription plans while providing admins with tools for plan management, analytics, and insights.
 
-## Available Scripts
+This project is designed as a hackathon-ready MVP with a Node.js/Express backend, MongoDB database, and React frontend.
 
-In the project directory, you can run:
+🚀 Features
+User
 
-### `npm start`
+Browse available subscription plans
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Subscribe to a plan
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Upgrade or downgrade subscriptions
 
-### `npm test`
+Cancel or renew subscriptions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+View active subscription details
 
-### `npm run build`
+Admin
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Create, update, or deactivate plans
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+View all plans (active + inactive)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Access admin dashboard with insights:
 
-### `npm run eject`
+Top plans by active subscriptions
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Active vs cancelled subscriptions
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Monthly trends
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Analytics (Optional Enhancements)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Subscription trends per plan per month
 
-## Learn More
+Churn prediction from logs
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Revenue insights from billing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+🛠️ Tech Stack
 
-### Code Splitting
+Backend: Node.js, Express.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Database: MongoDB (Local or Atlas)
 
-### Analyzing the Bundle Size
+Auth: JWT, bcrypt.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Frontend: React.js (with Chart.js/Recharts for analytics)
 
-### Making a Progressive Web App
+Utilities: dotenv, cors, nodemon, xlsx
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+📂 Project Structure
+subscription-management-backend/
+│── server.js
+│── config/
+│   └── db.js
+│── models/
+│   ├── User.js
+│   ├── Plan.js
+│   ├── Subscription.js
+│   ├── SubscriptionLog.js
+│   └── Billing.js
+│── routes/
+│   ├── userRoutes.js
+│   ├── adminRoutes.js
+│   └── analyticsRoutes.js (optional)
+│── controllers/
+│   ├── userController.js
+│   ├── adminController.js
+│   └── analyticsController.js (optional)
+│── middleware/
+│   └── authMiddleware.js
+│── seed/
+│   └── importDataset.js
 
-### Advanced Configuration
+⚙️ Setup & Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Clone repo
 
-### Deployment
+git clone https://github.com/your-username/subscription-management-system.git
+cd subscription-management-backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+npm install
+
+
+Setup environment
+Create a .env file in the root:
+
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+
+
+Run server
+
+npm run dev
+
+
+Seed database (optional)
+
+node seed/importDataset.js
+
+🔑 API Endpoints
+User
+
+GET /plans – List all active plans
+
+POST /subscribe/:planId – Subscribe to a plan
+
+PUT /subscription/:id/upgrade – Upgrade subscription
+
+PUT /subscription/:id/downgrade – Downgrade subscription
+
+PUT /subscription/:id/cancel – Cancel subscription
+
+PUT /subscription/:id/renew – Renew subscription
+
+GET /my-subscription – View active subscription
+
+Admin
+
+POST /admin/plans – Create a plan
+
+PUT /admin/plans/:id – Update a plan
+
+DELETE /admin/plans/:id – Deactivate a plan
+
+GET /admin/plans – View all plans
+
+GET /admin/dashboard – Analytics dashboard
+
+Analytics (optional)
+
+GET /analytics/plan-trends
+
+GET /analytics/churn
+
+GET /analytics/revenue
+
+🎯 Demo Flow (MVP)
+
+Login as User → Browse plans → Subscribe → Cancel or renew
+
+Login as Admin → Create a new plan → Open dashboard → View charts
+
+(Optional) → Explore churn/revenue analytics
