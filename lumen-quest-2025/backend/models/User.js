@@ -26,18 +26,23 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['admin', 'manager', 'staff'],
-    default: 'staff'
+    enum: ['admin', 'manager', 'staff', 'user'],
+    default: 'user'
   },
   department: {
     type: String,
     enum: ['inventory', 'sales', 'procurement', 'technical', 'finance'],
-    required: [true, 'Department is required']
+    required: function() {
+      return ['admin', 'manager', 'staff'].includes(this.role);
+    }
   },
   employeeId: {
     type: String,
     unique: true,
-    required: [true, 'Employee ID is required']
+    sparse: true, // Allows multiple null values
+    required: function() {
+      return ['admin', 'manager', 'staff'].includes(this.role);
+    }
   },
   phone: {
     type: String,

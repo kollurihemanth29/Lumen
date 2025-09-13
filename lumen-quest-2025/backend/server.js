@@ -19,6 +19,9 @@ const { errorHandler, notFound } = require('./middleware/errorMiddleware');
 // Route imports
 const authRoutes = require('./routes/authRoutes');
 const oauthRoutes = require('./routes/oauthRoutes');
+const userRoutes = require('./routes/userRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
 
 // Connect to database
 connectDB();
@@ -83,6 +86,9 @@ app.get('/api/health', (req, res) => {
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/auth', oauthRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 // Welcome route
 app.get('/', (req, res) => {
@@ -99,7 +105,10 @@ app.get('/', (req, res) => {
       health: '/api/health',
       auth: '/api/auth',
       login: '/api/auth/login',
-      register: '/api/auth/register'
+      register: '/api/auth/register',
+      user: '/api/user',
+      admin: '/api/admin',
+      analytics: '/api/analytics'
     },
     timestamp: new Date().toISOString()
   });
