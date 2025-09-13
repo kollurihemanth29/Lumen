@@ -19,11 +19,17 @@ const { errorHandler, notFound } = require('./middleware/errorMiddleware');
 // Route imports
 const authRoutes = require('./routes/authRoutes');
 const oauthRoutes = require('./routes/oauthRoutes');
+<<<<<<< HEAD
 const subscriptionRoutes = require('./routes/subscriptionRoutes');
 const planRoutes = require('./routes/planRoutes');
 const discountRoutes = require('./routes/discountRoutes');
 const analyticsRoutes = require('./routes/analyticsRoutes');
 const usageRoutes = require('./routes/usageRoutes');
+=======
+const userRoutes = require('./routes/userRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
+>>>>>>> 5bf46421c429c20e5464e1e7d7a47461380d6e59
 
 // Connect to database
 connectDB();
@@ -88,11 +94,17 @@ app.get('/api/health', (req, res) => {
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/auth', oauthRoutes);
+<<<<<<< HEAD
 app.use('/api/subscriptions', subscriptionRoutes);
 app.use('/api/plans', planRoutes);
 app.use('/api/discounts', discountRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/usage', usageRoutes);
+=======
+app.use('/api/user', userRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/analytics', analyticsRoutes);
+>>>>>>> 5bf46421c429c20e5464e1e7d7a47461380d6e59
 
 // Welcome route
 app.get('/', (req, res) => {
@@ -110,11 +122,17 @@ app.get('/', (req, res) => {
       auth: '/api/auth',
       login: '/api/auth/login',
       register: '/api/auth/register',
+<<<<<<< HEAD
       subscriptions: '/api/subscriptions',
       plans: '/api/plans',
       discounts: '/api/discounts',
       analytics: '/api/analytics',
       usage: '/api/usage'
+=======
+      user: '/api/user',
+      admin: '/api/admin',
+      analytics: '/api/analytics'
+>>>>>>> 5bf46421c429c20e5464e1e7d7a47461380d6e59
     },
     timestamp: new Date().toISOString()
   });

@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const planSchema = new mongoose.Schema({
   name: {
     type: String,
+<<<<<<< HEAD
     required: [true, 'Plan name is required'],
     trim: true,
     maxlength: [100, 'Plan name cannot exceed 100 characters']
@@ -114,11 +115,71 @@ const planSchema = new mongoose.Schema({
   lastModifiedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
+=======
+    required: true,
+    unique: true,
+    trim: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true,
+    min: 0
+  },
+  currency: {
+    type: String,
+    required: true,
+    default: 'USD'
+  },
+  billingCycle: {
+    type: String,
+    enum: ['monthly', 'yearly', 'weekly', 'daily'],
+    required: true,
+    default: 'monthly'
+  },
+  features: [{
+    name: String,
+    description: String,
+    included: {
+      type: Boolean,
+      default: true
+    }
+  }],
+  limits: {
+    users: {
+      type: Number,
+      default: null // null means unlimited
+    },
+    storage: {
+      type: Number,
+      default: null // in GB
+    },
+    apiCalls: {
+      type: Number,
+      default: null // per month
+    }
+  },
+  isActive: {
+    type: Boolean,
+    default: true
+  },
+  isPopular: {
+    type: Boolean,
+    default: false
+  },
+  trialDays: {
+    type: Number,
+    default: 0
+>>>>>>> 5bf46421c429c20e5464e1e7d7a47461380d6e59
   }
 }, {
   timestamps: true
 });
 
+<<<<<<< HEAD
 // Index for efficient queries
 planSchema.index({ type: 1, 'availability.isActive': 1 });
 planSchema.index({ 'pricing.monthlyPrice': 1 });
@@ -144,4 +205,6 @@ planSchema.statics.getPopularPlans = function(limit = 5) {
     .limit(limit);
 };
 
+=======
+>>>>>>> 5bf46421c429c20e5464e1e7d7a47461380d6e59
 module.exports = mongoose.model('Plan', planSchema);

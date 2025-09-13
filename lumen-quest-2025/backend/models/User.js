@@ -40,11 +40,37 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
+<<<<<<< HEAD
     enum: ['admin', 'staff', 'end-user'],
     default: 'end-user'
   },
   // Additional fields for authentication and security
   isEmailVerified: {
+=======
+    enum: ['admin', 'manager', 'staff', 'user'],
+    default: 'user'
+  },
+  department: {
+    type: String,
+    enum: ['inventory', 'sales', 'procurement', 'technical', 'finance'],
+    required: function() {
+      return ['admin', 'manager', 'staff'].includes(this.role);
+    }
+  },
+  employeeId: {
+    type: String,
+    unique: true,
+    sparse: true, // Allows multiple null values
+    required: function() {
+      return ['admin', 'manager', 'staff'].includes(this.role);
+    }
+  },
+  phone: {
+    type: String,
+    match: [/^\d{10}$/, 'Please enter a valid 10-digit phone number']
+  },
+  isActive: {
+>>>>>>> 5bf46421c429c20e5464e1e7d7a47461380d6e59
     type: Boolean,
     default: false
   },
