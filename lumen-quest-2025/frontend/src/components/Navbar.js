@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import NotificationSystem from './NotificationSystem';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
@@ -107,32 +108,96 @@ const Navbar = () => {
 
         {/* Navigation */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          {/* Spacer to push content to the right */}
-          <div className="flex-grow-1"></div>
-          
+          {/* Navigation Links */}
+          <ul className="navbar-nav mx-auto">
+            {user.role === 'admin' ? (
+              <>
+                <li className="nav-item">
+                  <Link to="/admin" className="nav-link text-white px-3 py-2 fw-medium">
+                    <i className="bi bi-speedometer2 me-1"></i>
+                    Dashboard
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/admin/plans" className="nav-link text-white px-3 py-2 fw-medium">
+                    <i className="bi bi-router me-1"></i>
+                    Plans
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/admin/analytics" className="nav-link text-white px-3 py-2 fw-medium">
+                    <i className="bi bi-graph-up me-1"></i>
+                    Analytics
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/admin/discounts" className="nav-link text-white px-3 py-2 fw-medium">
+                    <i className="bi bi-percent me-1"></i>
+                    Discounts
+                  </Link>
+                </li>
+                <li className="nav-item dropdown">
+                  <button 
+                    className="nav-link text-white px-3 py-2 btn btn-link border-0 fw-medium dropdown-toggle"
+                    id="adminDropdown"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i className="bi bi-people me-1"></i>
+                    Users
+                  </button>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <button 
+                        className="dropdown-item"
+                        onClick={handleCreateUser}
+                      >
+                        <i className="bi bi-person-plus me-2"></i>
+                        Create User
+                      </button>
+                    </li>
+                    <li>
+                      <button 
+                        className="dropdown-item"
+                        onClick={handleManageUsers}
+                      >
+                        <i className="bi bi-people-fill me-2"></i>
+                        Manage Users
+                      </button>
+                    </li>
+                  </ul>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link to="/dashboard" className="nav-link text-white px-3 py-2 fw-medium">
+                    <i className="bi bi-house me-1"></i>
+                    Dashboard
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/subscriptions" className="nav-link text-white px-3 py-2 fw-medium">
+                    <i className="bi bi-router me-1"></i>
+                    Subscriptions
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/usage" className="nav-link text-white px-3 py-2 fw-medium">
+                    <i className="bi bi-graph-up-arrow me-1"></i>
+                    Usage
+                  </Link>
+                </li>
+              </>
+            )}
+          </ul>
+
           {/* Right side navigation and profile */}
           <div className="d-flex align-items-center gap-2">
+            {/* Notifications */}
+            <NotificationSystem />
+            
             <ul className="navbar-nav d-flex flex-row">
-              {user.role === 'admin' && (
-                <>
-                  <li className="nav-item">
-                    <button 
-                      className="nav-link text-white px-3 py-2 btn btn-link border-0 fw-medium"
-                      onClick={handleCreateUser}
-                    >
-                      Create User
-                    </button>
-                  </li>
-                  <li className="nav-item">
-                    <button 
-                      className="nav-link text-white px-3 py-2 btn btn-link border-0 fw-medium"
-                      onClick={handleManageUsers}
-                    >
-                      Manage Users
-                    </button>
-                  </li>
-                </>
-              )}
             </ul>
 
             {/* Profile */}

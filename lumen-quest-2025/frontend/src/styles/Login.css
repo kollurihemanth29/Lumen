@@ -723,7 +723,30 @@
   will-change: transform;
 }
 
-/* Error Message */
+/* Error and Success Messages */
+.error-message, .success-message {
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.error-message {
+  background: rgba(255, 0, 80, 0.1);
+  border: 1px solid rgba(255, 0, 80, 0.3);
+  color: #ff6b9d;
+}
+
+.success-message {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  color: var(--success-green);
+}
+
 .login-error {
   background: rgba(255, 0, 80, 0.1);
   border: 1px solid rgba(255, 0, 80, 0.3);
@@ -735,6 +758,98 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
+}
+
+/* Form Row for side-by-side fields */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.checkbox-label:hover {
+  color: var(--text-primary);
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-label .checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(0, 240, 255, 0.3);
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background: var(--electric-cyan);
+  border-color: var(--electric-cyan);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Form Toggle */
+.form-toggle {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.form-toggle p {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: var(--electric-cyan);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin-left: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.toggle-btn:hover:not(:disabled) {
+  color: var(--soft-magenta);
+}
+
+.toggle-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Form Footer */

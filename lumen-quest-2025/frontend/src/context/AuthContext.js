@@ -80,12 +80,20 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Public registration removed - only admins can create users
+  // Public registration for end-users
   const register = async (userData) => {
-    return { 
-      success: false, 
-      message: 'Public registration is disabled. Contact your administrator to create an account.' 
-    };
+    try {
+      console.log('Registration attempt:', { ...userData, password: '***' });
+      
+      const response = await axios.post('http://localhost:5000/api/auth/register', userData);
+
+      console.log('Registration response:', response.data);
+      
+      return { success: true, message: 'Registration successful! Please sign in.' };
+    } catch (error) {
+      const message = error.response?.data?.message || 'Registration failed';
+      return { success: false, message };
+    }
   };
 
   // Function to set user context directly (for OAuth)
@@ -143,8 +151,7 @@ export const AuthProvider = ({ children }) => {
     changePassword,
     isAuthenticated: !!user,
     isAdmin: user?.role === 'admin',
-    isManager: user?.role === 'manager',
-    isStaff: user?.role === 'staff'
+    isEndUser: user?.role === 'end-user'
   };
 
   return (

@@ -3,15 +3,95 @@ const { generateToken } = require('../utils/generateToken');
 const { validationResult } = require('express-validator');
 const { sendEmail } = require('../utils/notification');
 
-// @desc    Register user (DEPRECATED - Use admin/create-user instead)
+// @desc    Register end-user for broadband subscription
 // @route   POST /api/auth/register
-// @access  REMOVED - Admin only registration
+// @access  Public
 const register = async (req, res) => {
-  // Public registration is disabled - only admins can create users
-  return res.status(403).json({
-    success: false,
-    message: 'Public registration is disabled. Contact your administrator to create an account.'
-  });
+  try {
+    // Check for validation errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        message: 'Validation failed',
+        errors: errors.array()
+      });
+    }
+
+    const { 
+      name, 
+      email, 
+      password, 
+      phone, 
+      address, 
+      preferences, 
+      usageProfile 
+    } = req.body;
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        message: 'Email already registered'
+      });
+    }
+
+    // Create end-user account
+    const user = await User.create({
+      name,
+      email,
+      password,
+      phone,
+      role: 'end-user', // Default role for public registration
+      address: address || {},
+      preferences: preferences || {
+        notifications: {
+          email: true,
+          sms: false,
+          renewalReminders: true,
+          promotionalOffers: true
+        },
+        autoRenew: false
+      },
+      usageProfile: usageProfile || {
+        primaryUsage: 'general'
+      }
+    });
+
+    // Send welcome email notification
+    try {
+      const emailSubject = 'Welcome to Lumen Quest!';
+      const emailText = `Hello ${user.name}, welcome to Lumen Quest! Your account has been created successfully. You can now explore our broadband plans and manage your subscriptions.`;
+
+      const emailResult = await sendEmail(user.email, emailSubject, emailText);
+      if (!emailResult.success) {
+        console.warn('Failed to send welcome email:', emailResult.error);
+      }
+    } catch (notificationError) {
+      console.error('Email notification error:', notificationError);
+    }
+
+    res.status(201).json({
+      success: true,
+      message: 'Registration successful! You can now sign in.',
+      data: {
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+          phone: user.phone
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Registration error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error during registration'
+    });
+  }
 };
 
 // @desc    Login user
@@ -65,8 +145,7 @@ const login = async (req, res) => {
     // Generate token
     const token = generateToken({
       id: user._id,
-      role: user.role,
-      department: user.department
+      role: user.role
     });
 
     res.json({
@@ -78,9 +157,10 @@ const login = async (req, res) => {
           name: user.name,
           email: user.email,
           role: user.role,
-          department: user.department,
-          employeeId: user.employeeId,
           phone: user.phone,
+          address: user.address,
+          preferences: user.preferences,
+          usageProfile: user.usageProfile,
           lastLogin: user.lastLogin
         },
         token
@@ -110,9 +190,10 @@ const getProfile = async (req, res) => {
           name: user.name,
           email: user.email,
           role: user.role,
-          department: user.department,
-          employeeId: user.employeeId,
           phone: user.phone,
+          address: user.address,
+          preferences: user.preferences,
+          usageProfile: user.usageProfile,
           isActive: user.isActive,
           lastLogin: user.lastLogin,
           createdAt: user.createdAt

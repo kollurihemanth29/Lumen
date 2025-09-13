@@ -10,6 +10,12 @@ import Profile from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
 import CreateUserPage from './pages/CreateUserPage';
 import ManageUsersPage from './pages/ManageUsersPage';
+import UserDashboard from './pages/UserDashboard';
+import SubscriptionManagement from './pages/SubscriptionManagement';
+import PlansManagement from './pages/PlansManagement';
+import AnalyticsDashboard from './pages/AnalyticsDashboard';
+import DiscountsManagement from './pages/DiscountsManagement';
+import UsageTracking from './pages/UsageTracking';
 import ManagerDashboard from './pages/ManagerDashboard';
 import StaffDashboard from './pages/StaffDashboard';
 import OAuthSuccess from './pages/OAuthSuccess';
@@ -45,7 +51,7 @@ const AppRoutes = () => {
         {/* Public Routes */}
         <Route 
           path="/login" 
-          element={user ? <Navigate to={`/${user.role}`} replace /> : <Login />} 
+          element={user ? <Navigate to={user.role === 'admin' ? '/admin' : '/dashboard'} replace /> : <Login />} 
         />
         <Route path="/oauth/success" element={<OAuthSuccess />} />
         <Route path="/not-authorized" element={<NotAuthorized />} />
@@ -86,6 +92,56 @@ const AppRoutes = () => {
           } 
         />
         <Route 
+          path="/dashboard" 
+          element={
+            <ProtectedRoute requiredRole="end-user">
+              <UserDashboard />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/subscriptions" 
+          element={
+            <ProtectedRoute requiredRole="end-user">
+              <SubscriptionManagement />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/usage" 
+          element={
+            <ProtectedRoute requiredRole="end-user">
+              <UsageTracking />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/admin/plans" 
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <PlansManagement />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/admin/analytics" 
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <AnalyticsDashboard />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/admin/discounts" 
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <DiscountsManagement />
+            </ProtectedRoute>
+          } 
+        />
+        
+        {/* Legacy routes for backward compatibility */}
+        <Route 
           path="/manager" 
           element={
             <ProtectedRoute requiredRole="manager">
@@ -113,7 +169,7 @@ const AppRoutes = () => {
           path="/home" 
           element={
             user ? (
-              <Navigate to={`/${user.role}`} replace />
+              <Navigate to={user.role === 'admin' ? '/admin' : '/dashboard'} replace />
             ) : (
               <Navigate to="/" replace />
             )
@@ -125,7 +181,7 @@ const AppRoutes = () => {
           path="*" 
           element={
             user ? (
-              <Navigate to={`/${user.role}`} replace />
+              <Navigate to={user.role === 'admin' ? '/admin' : '/dashboard'} replace />
             ) : (
               <Navigate to="/login" replace />
             )
